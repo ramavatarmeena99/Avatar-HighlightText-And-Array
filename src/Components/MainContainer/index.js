@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { paragraph } from '../../Data'
-import Modal from '../Modal';
+import React, { useState } from "react";
+import { paragraph } from "../../Data";
+import Modal from "../Modal";
+import "./mainContainer.css";
 
 function Highlight({ children: text = "", tags = [] }) {
   if (!tags?.length) return text;
@@ -59,9 +60,10 @@ function ParasList({ activeParaId, setPara }) {
           style={{
             cursor: "pointer",
             textAlign: "left",
-            marginBottom: 10,
+            // marginBottom: 10,
             padding: 10,
             backgroundColor: activeParaId === para.id && "#ccc",
+            border: "1px solid black",
           }}
           key={i}
           onClick={() => paragraphHanlder(para)}
@@ -126,95 +128,118 @@ export default function Index() {
   }
 
   return (
-    <div className="App">
-    {isDelete && <Modal deleteMe={deleteMe} onClose={handleClose} />}
+    <div className="mainContainer">
+      {isDelete && <Modal deleteMe={deleteMe} onClose={handleClose} />}
 
-    <div className="divFirst">
-      <div className="cardHeader">
-        <h1>Records</h1>
+      <div className="divFirst">
+        <div className="cardHeader">
+          <h1>Records</h1>
+        </div>
+        <ParasList
+          activeParaId={para?.id}
+          // tags={selected}
+          setPara={setPara}
+        />
       </div>
-      <ParasList
-        activeParaId={para?.id}
-        // tags={selected}
-        setPara={setPara}
-      />
-    </div>
-    <div className="divTwo">
-      <div className="cardHeader">
-        <button
-          onClick={() => setCategory("person")}
-          type="button"
+      <div className="divTwo">
+        <div
           style={{
-            backgroundColor: category === "person" ? "green" : "red",
-
-            color: "white",
+            textAlign: "left",
           }}
+          className="cardHeader"
         >
-          Person
+          <button
+            onClick={() => setCategory("person")}
+            type="button"
+            style={{
+              backgroundColor: category === "person" ? "green" : "",
+              border: "1px solid white",
+              borderRadius: "5px",
+              padding: " 0px 10px",
+              color: "white",
+            }}
+          >
+            Person
+          </button>
+
+          <button
+            style={{
+              backgroundColor: category === "org" ? "green" : "",
+              marginLeft: 10,
+              border: "1px solid white",
+              borderRadius: "5px",
+              padding: " 0px 10px",
+              color: "white",
+            }}
+            onClick={() => setCategory("org")}
+            type="button"
+          >
+            Org
+          </button>
+        </div>
+
+        <h4 onMouseUp={() => getSelectedText()}>
+          <Highlight tags={selected}>{para?.text}</Highlight>
+        </h4>
+      </div>
+      <div className="divThird">
+        <div className="cardHeader">
+          <h1>Annotations</h1>
+        </div>
+        <button
+          onClick={() => {
+            setSelected([]);
+            localStorage.removeItem("myItems");
+          }}
+          type="button"
+          className="ml-2 mt-2  inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          CLEAR ALL
         </button>
 
-        <button
-          style={{
-            backgroundColor: category === "org" ? "green" : "red",
-            marginLeft: 10,
-            color: "white",
-          }}
-          onClick={() => setCategory("org")}
-          type="button"
-        >
-          Org
-        </button>
-      </div>
+        <h1>SELECTED LIST</h1>
 
-      <h4 onMouseUp={() => getSelectedText()}>
-        <Highlight tags={selected}>{para?.text}</Highlight>
-      </h4>
-    </div>
-    <div className="divThird">
-      <div className="cardHeader">
-        <h1>Annotations</h1>
-      </div>
-      <button
-        onClick={() => {
-          setSelected([]);
-          localStorage.removeItem("myItems");
-        }}
-        type="button"
-        className="ml-2  inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        CLEAR ALL
-      </button>
-
-      <h1>SELECTED LIST</h1>
-
-      {selected.length === 0 &&
-        "Select your words from the paragraph list..."}
-      {selected?.map((item, index) => {
-        return (
-          <p key={index}>
-            {item.key}
-            <span
+        {selected.length === 0 &&
+          "Select your words from the paragraph list..."}
+        {selected?.map((item, index) => {
+          return (
+            <div
               style={{
-                color: "red",
-                marginLeft: 5,
-                borderBottom: "1px solid red",
+                width: "100%",
+                height: "auto",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+                paddingTop: "10px",
               }}
             >
-              {item.category}
-            </span>
-            <span
-              onClick={() => deleteMeData(item.key)}
-              style={{ color: "red", marginLeft: 20 }}
-            >
-              X
-            </span>
-          </p>
-        );
-      })}
+              <p style={{ width: "30%", textAlign: "left" }} key={index}>
+                {item.key}
+              </p>
+
+              <span
+                style={{
+                  width: "40px",
+                  color: "black",
+                  marginLeft: 5,
+                  borderBottom: "1px solid red",
+                }}
+              >
+                {item.category}
+              </span>
+              <span
+                onClick={() => deleteMeData(item.key)}
+                style={{ color: "red", marginLeft: 20, cursor: "pointer" }}
+              >
+                X
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* <ParasList /> */}
     </div>
-
-    {/* <ParasList /> */}
-  </div>
-
-  )
+  );
 }
