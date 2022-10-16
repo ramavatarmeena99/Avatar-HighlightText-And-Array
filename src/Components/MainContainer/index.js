@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { paragraph } from "../../Data";
 import Modal from "../Modal";
-import "./mainContainer.css";
+
+import Style from "./index.module.css"
 
 function Highlight({ children: text = "", tags = [] }) {
   if (!tags?.length) return text;
@@ -20,15 +21,15 @@ function Highlight({ children: text = "", tags = [] }) {
   return (
     <span>
       {startText}
-      {matches.map((match, i) => {
+      {matches.map((match, e) => {
         const startIndex = match.index;
-        const getType = tags.filter((tg) => tg.key == match)[0].category;
+        const getType = tags.filter((tg) => tg.key === match)[0]?.category;
         const currentText = match[0];
         const endIndex = startIndex + currentText.length;
-        const nextIndex = matches[i + 1]?.index;
+        const nextIndex = matches[e + 1]?.index;
         const untilNextText = text.slice(endIndex, nextIndex);
         return (
-          <span key={i}>
+          <span key={e}>
             <mark>
               {currentText}{" "}
               <span
@@ -75,11 +76,14 @@ function ParasList({ activeParaId, setPara }) {
   );
 }
 
-export default function Index() {
+export default function MainContainer() {
   let defData = JSON.parse(localStorage.getItem("myItems"));
+  let countData = JSON.parse(localStorage.getItem("totalCount"));
+
   const [selected, setSelected] = useState(defData ? defData : []);
   const [category, setCategory] = useState("person");
   const [isDelete, setIsDelete] = useState(false);
+  const [counter, setCounter] = useState(countData ? countData: {})
 
   const [para, setPara] = useState(paragraph[0]);
 
@@ -102,20 +106,42 @@ export default function Index() {
       return;
     }
 
+  
+
     let newArr = [...selected, { key: txt?.toString(), category }];
 
     localStorage.setItem("myItems", JSON.stringify(newArr));
 
+
+  let countPerson = newArr?.filter((item) => item?.category === "person");
+
+  let countOrg = newArr?.filter((item) => item?.category === "org");
+  
+let countedeData = {countOrg:countOrg?.length,countPerson:countPerson?.length} 
+localStorage.setItem("totalCount", JSON.stringify(countedeData));
+
+setCounter(countedeData)
+  
     setSelected(newArr);
+
+
+
     return txt;
   }
 
+
+
+// if(category === "person"){
+  
+
+// }
   const [deletMedata, setdeletMedata] = useState("");
 
   function deleteMe() {
     let remain = selected?.filter((item) => item.key !== deletMedata);
     setSelected(remain);
     handleClose();
+
   }
 
   function deleteMeData(txt) {
@@ -124,15 +150,18 @@ export default function Index() {
   }
 
   function handleClose() {
+    // setCounter(counter-1)
+
     setIsDelete(false);
+
   }
 
   return (
-    <div className="mainContainer">
+    <div className={Style.mainContainer}>
       {isDelete && <Modal deleteMe={deleteMe} onClose={handleClose} />}
 
-      <div className="divFirst">
-        <div className="cardHeader">
+      <div className={Style.divFirst}>
+        <div className={Style.cardHeader}>
           <h1>Records</h1>
         </div>
         <ParasList
@@ -141,40 +170,45 @@ export default function Index() {
           setPara={setPara}
         />
       </div>
-      <div className="divTwo">
+      <div className={Style.divTwo}>
         <div
           style={{
             textAlign: "left",
           }}
-          className="cardHeader"
+          className={Style.cardHeader}
         >
           <button
             onClick={() => setCategory("person")}
             type="button"
             style={{
-              backgroundColor: category === "person" ? "green" : "",
+              backgroundColor: category === "person" ? "white" : "",
               border: "1px solid white",
               borderRadius: "5px",
               padding: " 0px 10px",
-              color: "white",
+              color: category === "person" ? "green" : "white",
+
             }}
           >
             Person
+{counter?.countPerson}
+
           </button>
 
           <button
             style={{
-              backgroundColor: category === "org" ? "green" : "",
+              backgroundColor: category === "org" ? "white" : "",
               marginLeft: 10,
               border: "1px solid white",
               borderRadius: "5px",
               padding: " 0px 10px",
-              color: "white",
+              color: category === "org" ? "green" : "white",
             }}
             onClick={() => setCategory("org")}
             type="button"
           >
             Org
+{counter?.countOrg}
+
           </button>
         </div>
 
@@ -182,8 +216,8 @@ export default function Index() {
           <Highlight tags={selected}>{para?.text}</Highlight>
         </h4>
       </div>
-      <div className="divThird">
-        <div className="cardHeader">
+      <div className={Style.divThird}>
+        <div className={Style.cardHeader}>
           <h1>Annotations</h1>
         </div>
         <button
