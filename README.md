@@ -1,4 +1,4 @@
-![](https://github.com/ramavatarmeena99/Avatar-Pexel-gallery/blob/main/src/Component/Assest/AvatarPexels.png?raw=true)
+![](https://github.com/ramavatarmeena99/Avatar-HighlightText-And-Array/blob/main/src/Components/Assests/HighlightText.png?raw=true)
 
 ## About Project
 
@@ -13,10 +13,10 @@
 * JavaScript
 * Styled Components
 * HTML/CSS
-* API
+
 
 ## Project Live
-### [Click here](https://avatarpexelspictures.netlify.app/) 
+### [Click here](https://hightlighttextandarray.netlify.app/) 
 
 ## Run This Project on Your Local Machine
 
@@ -26,7 +26,7 @@
     ```
 2. Change the directory 
     ```
-    cd avatar-pexels-image
+    cd avatar-highlight-text
     ```
 3. Install
     ```
@@ -77,7 +77,7 @@
     * If you think that something is missing from the readme file. You can introduce new sections for the readme file or can improve the existing one. 
 
 
-[Click here](https://github.com/ramavatarmeena99/Avatar-Pexel-gallery) to Contribute 
+[Click here](https://github.com/ramavatarmeena99/Avatar-HighlightText-And-Array) to Contribute 
 
 
 
