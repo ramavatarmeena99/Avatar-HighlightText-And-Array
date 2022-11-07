@@ -16,8 +16,8 @@ function Highlight({ children: text = "", tags = [] }) {
   }
 
   const matches = [...text.matchAll(new RegExp(_tags.join("|"), "ig"))];
-
   const startText = text.slice(0, matches[0]?.index);
+
   return (
     <span>
       {startText}
@@ -26,8 +26,12 @@ function Highlight({ children: text = "", tags = [] }) {
         const getType = tags.filter((tg) => tg.key === match)[0]?.category;
         const currentText = match[0];
         const endIndex = startIndex + currentText.length;
+
         const nextIndex = matches[e + 1]?.index;
+
         const untilNextText = text.slice(endIndex, nextIndex);
+console.log(untilNextText)
+
         return (
           <span key={e}>
             <mark>
@@ -100,6 +104,7 @@ export default function MainContainer() {
       // alert("min length 2 required");
       return;
     }
+    
 
     if (txt?.toString().length > 20) {
       // alert("Max length 15 required");

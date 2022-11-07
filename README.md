@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+![](https://github.com/ramavatarmeena99/Avatar-Pexel-gallery/blob/main/src/Component/Assest/AvatarPexels.png?raw=true)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About Project
 
-## Available Scripts
 
-In the project directory, you can run:
+## Features
+* Hightlight text
+* Delete select text
+* Select text you see in a component
 
-### `npm start`
+## Technology Stack Used In This Project
+* ReactJs
+* JavaScript
+* Styled Components
+* HTML/CSS
+* API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Live
+### [Click here](https://avatarpexelspictures.netlify.app/) 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Run This Project on Your Local Machine
 
-### `npm test`
+1. Clone the repository to your local desktop
+    ```
+    git clone paste_link_you_copied
+    ```
+2. Change the directory 
+    ```
+    cd avatar-pexels-image
+    ```
+3. Install
+    ```
+    npm install or yarn install
+    ```
+4. Run the application
+    ```
+    npm start
+    ```
+ 
+## How to Contribute
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Make a Fork.
+2. Clone the repository to your local desktop.
+    ```
+    git clone paste_link_you_copied
+    ```
+3. Create a new branch (It's necessary).
+    ```
+    git checkout -b branch-name
+    ```
+4. Make changes and Add to Staging here.
+    ```
+    git add.
+    ```
+5. Commit changes.
+    ```
+    git commit -m "Message you want to write"
+    ```
+    * _Always __write the message__ short and easy to understand (ideally 3 to 5 words)._
+6. Push the changes so that a pull request will be generated.
+    ```
+    git push -u origin branchName
+    ```
+7. Make PR.
+8. Commits should be descriptive.
+9. Try to minimize conflicts.
+10. Follow these steps only after you have Git installed in your system.
 
-### `npm run build`
+## Where to Contribute
+1. __UX/UI__
+    * You can improve the existing User Interface or can introduce a new layout for Flack.
+2. __Code reformat__
+    * You can introduce more concise and readable code 
+3. __Improvements in Backend__
+    * You can find any bug or error and can fix it
+4. __Readme file__
+    * If you think that something is missing from the readme file. You can introduce new sections for the readme file or can improve the existing one. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Click here](https://github.com/ramavatarmeena99/Avatar-Pexel-gallery) to Contribute 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Note 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please do not commit to master branch. please merge your branch with development branch.
